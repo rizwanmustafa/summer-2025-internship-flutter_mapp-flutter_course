@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/views/widget_tree.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-const appTitle = 'Flutter App';
+// stateful can refresh
+// stateless cannot refresh
+// setState can be used to refresh
 
-// stateless
-// material app
-// scaffold
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return WidgetTree();
+  }
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -24,20 +37,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      home: Scaffold(
-        appBar: AppBar(title: Text(appTitle), centerTitle: true),
-
-        bottomNavigationBar: NavigationBar(
-          destinations: [
-            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
-          ],
-          selectedIndex: 0,
-          onDestinationSelected: (destination) {
-            print('User clicked on destination $destination');
-          },
-        ),
-      ),
+      home: MyHomePage(),
     );
   }
 }
