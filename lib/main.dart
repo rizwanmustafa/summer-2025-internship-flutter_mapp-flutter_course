@@ -30,29 +30,10 @@ class MyApp extends StatelessWidget {
             NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
             NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
           ],
-          selectedIndex: 1,
+          selectedIndex: 0,
           onDestinationSelected: (destination) {
             print('User clicked on destination $destination');
           },
-        ),
-
-        floatingActionButton: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FloatingActionButton(
-              onPressed: () {
-                print('User pressed the floating action button!');
-              },
-              child: Icon(Icons.add),
-            ),
-            SizedBox(height: 10),
-            FloatingActionButton(
-              onPressed: () {
-                print('User pressed the floating action button!');
-              },
-              child: Icon(Icons.remove),
-            ),
-          ],
         ),
       ),
     );
