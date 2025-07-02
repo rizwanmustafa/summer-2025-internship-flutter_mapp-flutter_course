@@ -89,16 +89,16 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: SizedBox(
-        height: 500,
-        width: 500,
-
-        child: Stack(
-          children: [
-            Image.asset('assets/images/bg.webp', fit: BoxFit.cover),
-            Center(child: Text('Female Beauty Products')),
-          ],
-        ),
+      body: Wrap(
+        children: [
+          Text(
+            'This is Text1!asdfasdf wrfqw qf wfqwwqff qwefqwef qwefqwefqwef qwe fqwef qwef wdgvf fsdvfsad fvdf d',
+          ),
+          Text('This is Text1!'),
+          Text('This is Text1!'),
+          Text('This is Text1!'),
+          Text('This is Text1!'),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
