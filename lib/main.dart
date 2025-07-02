@@ -4,6 +4,8 @@ void main() {
   runApp(const MyApp());
 }
 
+const appTitle = 'Flutter App';
+
 // stateless
 // material app
 // scaffold
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       ),
 
       home: Scaffold(
-        appBar: AppBar(title: Text('Flutter Tutorial'), centerTitle: true),
+        appBar: AppBar(title: Text(appTitle), centerTitle: true),
 
         bottomNavigationBar: NavigationBar(
           destinations: [
