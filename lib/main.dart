@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/data/notifiers.dart';
 import 'package:flutter_tutorial/views/widget_tree.dart';
 
 void main() {
@@ -28,16 +29,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.lightGreen,
-          brightness: Brightness.dark,
-        ),
-      ),
+    return ValueListenableBuilder(
+      valueListenable: isDarkModeNotifier,
 
-      home: MyHomePage(),
+      builder: (context, isDarkMode, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.lightGreen,
+            brightness: isDarkMode ? Brightness.dark : Brightness.light,
+          ),
+        ),
+
+        home: MyHomePage(),
+      ),
     );
   }
 }
