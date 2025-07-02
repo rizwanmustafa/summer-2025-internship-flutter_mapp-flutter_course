@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/data/notifiers.dart';
 import 'package:flutter_tutorial/views/pages/home_page.dart';
+import 'package:flutter_tutorial/views/pages/settings_page.dart';
 import 'package:flutter_tutorial/views/pages/profile_page.dart';
-import 'widgets/navbar_widget.dart';
+import 'package:flutter_tutorial/views/widgets/navbar_widget.dart';
 
 const appTitle = 'Flutter App';
 
-List<Widget> pages = [HomePage(), ProfilePage()];
+List<Widget> pages = [HomePage(), ProfilePage(), SettingsPage()];
 
 class WidgetTree extends StatelessWidget {
   const WidgetTree({super.key});
@@ -22,8 +23,17 @@ class WidgetTree extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                isDarkModeNotifier.value = !isDarkMode;
+                // Navigator.pushReplacement can be used to replace the current page
+                // It can come in handy like if a user logs in and you don't want them to return back to the login page,you can use this to push home page as the replacement to the login page.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                );
               },
+              icon: Icon(Icons.settings),
+            ),
+            IconButton(
+              onPressed: () {},
               icon: Icon(isDarkMode ? Icons.dark_mode : Icons.light_mode),
             ),
           ],
