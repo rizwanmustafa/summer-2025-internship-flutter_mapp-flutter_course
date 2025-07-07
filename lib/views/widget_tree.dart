@@ -33,7 +33,9 @@ class WidgetTree extends StatelessWidget {
               icon: Icon(Icons.settings),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                isDarkModeNotifier.value = !isDarkModeNotifier.value;
+              },
               icon: Icon(isDarkMode ? Icons.dark_mode : Icons.light_mode),
             ),
           ],
