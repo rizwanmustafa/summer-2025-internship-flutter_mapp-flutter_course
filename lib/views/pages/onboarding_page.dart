@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/views/pages/login_page.dart';
 import 'package:flutter_tutorial/views/widget_tree.dart';
 import 'package:flutter_tutorial/views/widgets/hero_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -16,7 +17,7 @@ class OnboardingPage extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                HeroWidget(title: 'Onboarding'),
+                Lottie.asset('assets/lotties/hi.json'),
                 SizedBox(height: 20.0),
 
                 SizedBox(height: 10),
@@ -33,7 +34,7 @@ class OnboardingPage extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Text('Onboarding'),
+                  child: Text('Next'),
                 ),
                 SizedBox(height: 50),
               ],
