@@ -7,7 +7,7 @@ import 'package:flutter_tutorial/views/widgets/navbar_widget.dart';
 
 const appTitle = 'Flutter App';
 
-List<Widget> pages = [HomePage(), ProfilePage(), SettingsPage()];
+List<Widget> pages = [HomePage(), ProfilePage()];
 
 class WidgetTree extends StatelessWidget {
   const WidgetTree({super.key});
@@ -27,7 +27,9 @@ class WidgetTree extends StatelessWidget {
                 // It can come in handy like if a user logs in and you don't want them to return back to the login page,you can use this to push home page as the replacement to the login page.
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()),
+                  MaterialPageRoute(
+                    builder: (context) => SettingsPage(title: 'Settings'),
+                  ),
                 );
               },
               icon: Icon(Icons.settings),

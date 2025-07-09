@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+  const SettingsPage({super.key, required this.title});
+
+  final String title;
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
@@ -20,7 +22,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings Page'),
+        title: Text(widget.title),
         automaticallyImplyLeading: false,
         leading: BackButton(
           onPressed: () {
@@ -34,6 +36,50 @@ class _SettingsPageState extends State<SettingsPage> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
+              ElevatedButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('This is a snackbar!'),
+                      duration: Duration(seconds: 1),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.greenAccent,
+                  foregroundColor: Colors.white,
+                ),
+                child: Text('Open Snackbar!'),
+              ),
+
+              Divider(color: Colors.green, thickness: 2.0),
+
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog.adaptive(
+                        title: Text('Alert Dialog'),
+                        content: Text('I am an alert dialog!'),
+                        actions: [
+                          FilledButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text('Close'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.greenAccent,
+                  foregroundColor: Colors.white,
+                ),
+                child: Text('Open Dialog!'),
+              ),
+
               DropdownButton(
                 value: dropdownButtonValue,
                 items: [
@@ -107,15 +153,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: Colors.white12,
                   width: double.infinity,
                   child: Image.asset('assets/images/wallpaper2.jpg'),
-                ),
-              ),
-
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('Click Me!'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.greenAccent,
-                  foregroundColor: Colors.white,
                 ),
               ),
 
