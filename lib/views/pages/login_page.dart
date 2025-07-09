@@ -66,8 +66,8 @@ class _LoginPageState extends State<LoginPage> {
 
                 SizedBox(height: 10),
 
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
+                FilledButton(
+                  style: FilledButton.styleFrom(
                     minimumSize: Size(double.infinity, 40.0),
                   ),
                   onPressed: () {
@@ -89,9 +89,10 @@ class _LoginPageState extends State<LoginPage> {
 
     if (emailController.text == confirmedEmail &&
         passwordController.text == confirmedPassword) {
-      Navigator.of(
-        context,
-      ).pushReplacement(MaterialPageRoute(builder: (context) => WidgetTree()));
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => WidgetTree()),
+        (_) => false,
+      );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

@@ -9,3 +9,7 @@ class KTextStyle {
 
   static const TextStyle descriptionText = TextStyle(fontSize: 16);
 }
+
+class KConstants {
+  static const String isDarkModeKey = 'dark_mode';
+}

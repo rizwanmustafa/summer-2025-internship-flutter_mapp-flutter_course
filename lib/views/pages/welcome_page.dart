@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/views/pages/login_page.dart';
+import 'package:flutter_tutorial/views/pages/onboarding_page.dart';
 import 'package:lottie/lottie.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -41,9 +42,7 @@ class WelcomePage extends StatelessWidget {
                     // It can come in handy like if a user logs in and you don't want them to return back to the login page,you can use this to push home page as the replacement to the login page.
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => LoginPage(title: 'Register'),
-                      ),
+                      MaterialPageRoute(builder: (context) => OnboardingPage()),
                     );
                   },
                   child: Text('Get Started'),

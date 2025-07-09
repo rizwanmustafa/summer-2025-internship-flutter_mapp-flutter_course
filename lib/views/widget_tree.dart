@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/data/constants.dart';
 import 'package:flutter_tutorial/data/notifiers.dart';
 import 'package:flutter_tutorial/views/pages/home_page.dart';
 import 'package:flutter_tutorial/views/pages/settings_page.dart';
 import 'package:flutter_tutorial/views/pages/profile_page.dart';
 import 'package:flutter_tutorial/views/widgets/navbar_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 const appTitle = 'Flutter App';
 
@@ -35,8 +37,15 @@ class WidgetTree extends StatelessWidget {
               icon: Icon(Icons.settings),
             ),
             IconButton(
-              onPressed: () {
+              onPressed: () async {
+                final SharedPreferences prefs =
+                    await SharedPreferences.getInstance();
+
                 isDarkModeNotifier.value = !isDarkModeNotifier.value;
+                await prefs.setBool(
+                  KConstants.isDarkModeKey,
+                  isDarkModeNotifier.value,
+                );
               },
               icon: Icon(isDarkMode ? Icons.dark_mode : Icons.light_mode),
             ),
