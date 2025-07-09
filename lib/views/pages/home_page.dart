@@ -20,7 +20,9 @@ class HomePage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           children: [
+            SizedBox(height: 10.0),
             HeroWidget(title: 'Flutter Mapp Course', nextPage: CoursePage()),
+            SizedBox(height: 10),
 
             ...List.generate(4, (index) {
               return ContainerWidget(
