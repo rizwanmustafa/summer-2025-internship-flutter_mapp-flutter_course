@@ -10,32 +10,35 @@ class OnboardingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                Lottie.asset('assets/lotties/hi.json'),
-                SizedBox(height: 20.0),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 500),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  Lottie.asset('assets/lotties/hi.json'),
+                  SizedBox(height: 20.0),
 
-                SizedBox(height: 10),
+                  SizedBox(height: 10),
 
-                FilledButton(
-                  style: FilledButton.styleFrom(
-                    minimumSize: Size(double.infinity, 40.0),
+                  FilledButton(
+                    style: FilledButton.styleFrom(
+                      minimumSize: Size(double.infinity, 40.0),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginPage(title: 'Register'),
+                        ),
+                      );
+                    },
+                    child: Text('Next'),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LoginPage(title: 'Register'),
-                      ),
-                    );
-                  },
-                  child: Text('Next'),
-                ),
-                SizedBox(height: 50),
-              ],
+                  SizedBox(height: 50),
+                ],
+              ),
             ),
           ),
         ),

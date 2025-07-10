@@ -34,14 +34,14 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return FractionallySizedBox(
-                  widthFactor: screenWidth > 500 ? .5 : 1,
-                  child: Column(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 500),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return Column(
                     children: [
                       HeroWidget(title: widget.title),
                       SizedBox(height: 20.0),
@@ -83,9 +83,9 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       SizedBox(height: 50),
                     ],
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ),
