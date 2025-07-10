@@ -47,7 +47,7 @@ class _CoursePageState extends State<CoursePage> {
     return Scaffold(
       appBar: AppBar(),
       body: FutureBuilder(
-        future: getData(),
+        future: activity,
         builder: (context, snapshot) {
           Widget retWidget;
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -58,9 +58,68 @@ class _CoursePageState extends State<CoursePage> {
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    HeroWidget(title: activity.activity),
-                    Text(activity.activity),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Activity: ${activity.activity}',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ),
+
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Availability: ${activity.availability}'),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Type: ${activity.type}'),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Participants: ${activity.participants}'),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Price: ${activity.price}'),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Accessibility: ${activity.accessibility}'),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Duration: ${activity.duration}'),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Kid Friendly: ${activity.kidFriendly}'),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Link: ${activity.link}'),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Key: ${activity.key}'),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: FilledButton(
+                        onPressed: () {
+                          setState(() {
+                            this.activity = getData();
+                            debugPrint("Hello World!");
+                          });
+                        },
+                        child: Text('Fetch another activity!'),
+                      ),
+                    ),
                   ],
                 ),
               ),
