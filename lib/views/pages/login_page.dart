@@ -29,54 +29,63 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                HeroWidget(title: widget.title),
-                SizedBox(height: 20.0),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return FractionallySizedBox(
+                  widthFactor: screenWidth > 500 ? .5 : 1,
+                  child: Column(
+                    children: [
+                      HeroWidget(title: widget.title),
+                      SizedBox(height: 20.0),
 
-                TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    hintText: 'Email',
+                      TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          hintText: 'Email',
+                        ),
+                        controller: emailController,
+                        onEditingComplete: () => setState(() {}),
+                      ),
+
+                      SizedBox(height: 10.0),
+                      TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          hintText: 'Password',
+                        ),
+
+                        controller: passwordController,
+                        onEditingComplete: () => setState(() {}),
+                      ),
+
+                      SizedBox(height: 10),
+
+                      FilledButton(
+                        style: FilledButton.styleFrom(
+                          minimumSize: Size(double.infinity, 40.0),
+                        ),
+                        onPressed: () {
+                          onLoginPressed(context);
+                        },
+                        child: Text(widget.title),
+                      ),
+                      SizedBox(height: 50),
+                    ],
                   ),
-                  controller: emailController,
-                  onEditingComplete: () => setState(() {}),
-                ),
-
-                SizedBox(height: 10.0),
-                TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    hintText: 'Password',
-                  ),
-
-                  controller: passwordController,
-                  onEditingComplete: () => setState(() {}),
-                ),
-
-                SizedBox(height: 10),
-
-                FilledButton(
-                  style: FilledButton.styleFrom(
-                    minimumSize: Size(double.infinity, 40.0),
-                  ),
-                  onPressed: () {
-                    onLoginPressed(context);
-                  },
-                  child: Text(widget.title),
-                ),
-                SizedBox(height: 50),
-              ],
+                );
+              },
             ),
           ),
         ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/views/pages/login_page.dart';
-import 'package:flutter_tutorial/views/widget_tree.dart';
-import 'package:flutter_tutorial/views/widgets/hero_widget.dart';
 import 'package:lottie/lottie.dart';
 
 class OnboardingPage extends StatelessWidget {
